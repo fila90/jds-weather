@@ -1,10 +1,11 @@
 <script lang="ts">
-  import type { TypeHourWeather } from "src/helpers/type";
-  import { customRound, formatDateToHour } from "../helpers/util";
+  import type { TypeHourWeather } from '../helpers/type'
 
-  export let dayHour: TypeHourWeather;
-  export let todayHour: TypeHourWeather;
-  export let isToday: boolean;
+  import { customRound, formatDateToHour } from '../helpers/util'
+
+  export let dayHour: TypeHourWeather
+  export let todayHour: TypeHourWeather
+  export let isToday: boolean
 </script>
 
 <div class="hour">

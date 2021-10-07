@@ -13,12 +13,8 @@ export const debounce = (fn: Function, delay: number): Function => {
 };
 
 export const fetcher = async (url: string) => {
-  try {
     const res = await fetch(url, { method: "GET" });
     return await res.json();
-  } catch (error) {
-    throw error;
-  }
 };
 
 export const customRound = (value: number, step = 0.5): string => {

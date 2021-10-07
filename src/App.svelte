@@ -1,8 +1,8 @@
 <script lang="ts">
-  import LocationSearch from "./lib/LocationSearch.svelte";
-  import { geoLocation } from "./helpers/store";
-  import { FORECAST_DAY } from "./helpers/const";
-  import WeatherForecast from "./lib/WeatherForecast.svelte";
+  import { FORECAST_DAY } from './helpers/const'
+  import { geoLocation } from './helpers/store'
+  import LocationSearch from './lib/LocationSearch.svelte'
+  import WeatherForecast from './lib/WeatherForecast.svelte'
 </script>
 
 <main>
@@ -17,8 +17,8 @@
 
 <style>
   :root {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
 
     --color-border: #eee;

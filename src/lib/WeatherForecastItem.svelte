@@ -1,17 +1,18 @@
 <script lang="ts">
-  import type { TypeForecastDay } from "src/helpers/type";
-  import { customRound } from "../helpers/util";
+  import type { TypeForecastDay } from '../helpers/type'
 
-  export let weather: TypeForecastDay;
-  export let todayWeather: TypeForecastDay;
-  export let isToday: boolean;
-  export let label: string;
-  export let prop: string;
+  import { customRound } from '../helpers/util'
 
-  let value = '';
+  export let weather: TypeForecastDay
+  export let todayWeather: TypeForecastDay
+  export let isToday: boolean
+  export let label: string
+  export let prop: string
+
+  let value = ''
 
   $: {
-    value = customRound(weather.day[prop] - todayWeather.day[prop]);
+    value = customRound(weather.day[prop] - todayWeather.day[prop])
   }
 </script>
 
@@ -21,7 +22,7 @@
 </div>
 
 <style>
-.wrap {
+  .wrap {
     border: 2px solid var(--color-border);
     border-radius: 0.5rem;
     padding: 0.5rem;

@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { searchLocation } from "../helpers/api";
-  import { debounce } from "../helpers/util";
-  import LocationItem from "./LocationItem.svelte";
+  import { searchLocation } from '../helpers/api'
+  import { debounce } from '../helpers/util'
+  import LocationItem from './LocationItem.svelte'
 
-  let location: string = "";
-  let promise = Promise.resolve([]);
+  let location = ''
+  let promise = Promise.resolve([])
 
   const debounced = debounce((l: string) => {
-    promise = searchLocation(l);
-  }, 300);
+    promise = searchLocation(l)
+  }, 300)
 
   function handleLocationInput() {
-    debounced(location);
+    debounced(location)
   }
 </script>
 
@@ -24,7 +24,7 @@
     {:then locations}
       {#if locations.length}
         {#each locations as location (location.id)}
-          <LocationItem location={location} />
+          <LocationItem {location} />
         {/each}
       {/if}
     {:catch error}

@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { geoLocation } from "../helpers/store";
+  import type { TypeLocationItem } from '../helpers/type'
 
-  import type { TypeLocationItem } from "src/helpers/type";
+  import { geoLocation } from '../helpers/store'
 
-  export let location: TypeLocationItem;
+  export let location: TypeLocationItem
 
   function onLocationSelect() {
     geoLocation.setGeoLocation({
       lat: `${location.lat}`,
-      lon: `${location.lon}`,
-    });
+      lon: `${location.lon}`
+    })
   }
 </script>
 

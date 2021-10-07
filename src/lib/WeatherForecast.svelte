@@ -1,21 +1,23 @@
 <script lang="ts">
-  import type { TypeForecastDay } from "src/helpers/type";
-  import { formatDateToDay, formatDateToReadable } from "../helpers/util";
-  import { FORECAST_DAY } from "../helpers/const";
-  import { forecastWeather } from "../helpers/store";
-  import WeatherForecastTemp from "./WeatherForecastTemp.svelte";
-  import WeatherForecastItem from "./WeatherForecastItem.svelte";
-  import WeatherForecastHour from "./WeatherForecastHour.svelte";
+  import type { TypeForecastDay } from '../helpers/type'
 
-  export let forecastDay: string;
-  const isToday = forecastDay === FORECAST_DAY.TODAY;
+  import { FORECAST_DAY } from '../helpers/const'
+  import { forecastWeather } from '../helpers/store'
+  import { formatDateToDay, formatDateToReadable } from '../helpers/util'
 
-  let weather: TypeForecastDay;
-  let todayWeather: TypeForecastDay;
+  import WeatherForecastHour from './WeatherForecastHour.svelte'
+  import WeatherForecastItem from './WeatherForecastItem.svelte'
+  import WeatherForecastTemp from './WeatherForecastTemp.svelte'
+
+  export let forecastDay: string
+  const isToday = forecastDay === FORECAST_DAY.TODAY
+
+  let weather: TypeForecastDay
+  let todayWeather: TypeForecastDay
 
   $: {
-    weather = $forecastWeather.get(forecastDay);
-    todayWeather = $forecastWeather.get(FORECAST_DAY.TODAY);
+    weather = $forecastWeather.get(forecastDay)
+    todayWeather = $forecastWeather.get(FORECAST_DAY.TODAY)
   }
 </script>
 

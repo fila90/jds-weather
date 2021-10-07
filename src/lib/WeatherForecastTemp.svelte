@@ -1,21 +1,18 @@
 <script lang="ts">
-  import type { TypeForecastDay } from "src/helpers/type";
-  import { customRound } from "../helpers/util";
+  import type { TypeForecastDay } from '../helpers/type'
 
-  export let weather: TypeForecastDay;
-  export let todayWeather: TypeForecastDay;
-  export let isToday: boolean;
+  import { customRound } from '../helpers/util'
 
-  let tempMax: string;
-  let tempMin: string;
+  export let weather: TypeForecastDay
+  export let todayWeather: TypeForecastDay
+  export let isToday: boolean
+
+  let tempMax: string
+  let tempMin: string
 
   $: {
-    tempMax = customRound(
-      weather.day.maxtemp_c - todayWeather.day.maxtemp_c
-    );
-    tempMin = customRound(
-      weather.day.mintemp_c - todayWeather.day.mintemp_c
-    );
+    tempMax = customRound(weather.day.maxtemp_c - todayWeather.day.maxtemp_c)
+    tempMin = customRound(weather.day.mintemp_c - todayWeather.day.mintemp_c)
   }
 </script>
 
@@ -24,7 +21,6 @@
   {isToday ? weather.day.maxtemp_c : tempMax}°C /
   {isToday ? weather.day.mintemp_c : tempMin}°C
 </div>
-
 
 <style>
   .wrap {

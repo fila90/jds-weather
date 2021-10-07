@@ -1,4 +1,8 @@
-import { format, startOfYesterday } from "date-fns";
+import { startOfYesterday } from "date-fns";
+
+import { fetcher, formatDateToISO } from "./util";
+
+
 import type {
   TypeCurrentWeather,
   TypeForecastDay,
@@ -6,7 +10,6 @@ import type {
   TypeLocation,
   TypeLocationItem,
 } from "./type";
-import { fetcher, formatDateToISO } from "./util";
 
 
 const getSearchApiUrl = (): string => {
