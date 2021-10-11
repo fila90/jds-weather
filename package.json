@@ -6,8 +6,9 @@
     "build": "vite build",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "dev": "vite",
-    "lint:fix": "eslint --fix './src/**/*.{js,ts,svelte}'",
     "lint": "eslint './src/**/*.{js,ts,svelte}'",
+    "lint-staged": "lint-staged",
+    "lint:fix": "eslint --fix './src/**/*.{js,ts,svelte}'",
     "prepare": "husky install",
     "serve": "vite preview"
   },
