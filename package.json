@@ -10,7 +10,8 @@
     "lint-staged": "lint-staged",
     "lint:fix": "eslint --fix './src/**/*.{js,ts,svelte}'",
     "prepare": "husky install",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prettier:all": "prettier --write \"{,!(node_modules)/**/}*.{js,ts,svelte}\""
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "1.0.0-next.27",

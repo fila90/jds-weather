@@ -1,97 +1,95 @@
-import { startOfYesterday } from "date-fns";
+import { startOfYesterday } from 'date-fns'
 
-import { fetcher, formatDateToISO } from "./util";
-
+import { fetcher, formatDateToISO } from './util'
 
 import type {
-  TypeCurrentWeather,
-  TypeForecastDay,
-  TypeGeoLocation,
-  TypeLocation,
-  TypeLocationItem,
-} from "./type";
-
+	TypeCurrentWeather,
+	TypeForecastDay,
+	TypeGeoLocation,
+	TypeLocation,
+	TypeLocationItem
+} from './type'
 
 const getSearchApiUrl = (): string => {
-  const base = `${import.meta.env.VITE_API_URL}/search.json`;
-  return addApiSearchParams(base, { key: `${import.meta.env.VITE_API_KEY}` });
-};
+	const base = `${import.meta.env.VITE_API_URL}/search.json`
+	return addApiSearchParams(base, { key: `${import.meta.env.VITE_API_KEY}` })
+}
 
 const getCurrentApiUrl = (): string => {
-  const base = `${import.meta.env.VITE_API_URL}/current.json`;
-  return addApiSearchParams(base, { key: `${import.meta.env.VITE_API_KEY}` });
-};
+	const base = `${import.meta.env.VITE_API_URL}/current.json`
+	return addApiSearchParams(base, { key: `${import.meta.env.VITE_API_KEY}` })
+}
 
 const getForecastApiUrl = (): string => {
-  const base = `${import.meta.env.VITE_API_URL}/forecast.json`;
-  return addApiSearchParams(base, { key: `${import.meta.env.VITE_API_KEY}` });
-};
+	const base = `${import.meta.env.VITE_API_URL}/forecast.json`
+	return addApiSearchParams(base, { key: `${import.meta.env.VITE_API_KEY}` })
+}
 
 const getHistoryApiUrl = (): string => {
-  const base = `${import.meta.env.VITE_API_URL}/history.json`;
-  return addApiSearchParams(base, { key: `${import.meta.env.VITE_API_KEY}` });
-};
+	const base = `${import.meta.env.VITE_API_URL}/history.json`
+	return addApiSearchParams(base, { key: `${import.meta.env.VITE_API_KEY}` })
+}
 
 const addApiSearchParams = (
-  baseUrl: string,
-  querySearch: { [key: string]: string }
+	baseUrl: string,
+	querySearch: { [key: string]: string }
 ): string => {
-  const url = new URL(baseUrl);
-  const { searchParams } = url;
+	const url = new URL(baseUrl)
+	const { searchParams } = url
 
-  for (const key in querySearch) {
-    searchParams.append(key, querySearch[key]);
-  }
+	for (const key in querySearch) {
+		searchParams.append(key, querySearch[key])
+	}
 
-  return url.href;
-};
+	return url.href
+}
 
 export const searchLocation = async (
-  location: string
+	location: string
 ): Promise<Array<TypeLocationItem>> => {
-  const url = addApiSearchParams(getSearchApiUrl(), { q: location });
+	const url = addApiSearchParams(getSearchApiUrl(), { q: location })
 
-  return await fetcher(url);
-};
+	return await fetcher(url)
+}
 
 export const searchCurrentWeather = (
-  location: TypeGeoLocation
+	location: TypeGeoLocation
 ): Promise<{
-  current: TypeCurrentWeather;
-  location: TypeLocation;
+	current: TypeCurrentWeather
+	location: TypeLocation
 }> => {
-  const url = addApiSearchParams(getCurrentApiUrl(), {
-    q: `${location.lat},${location.lon}`,
-  });
+	const url = addApiSearchParams(getCurrentApiUrl(), {
+		q: `${location.lat},${location.lon}`
+	})
 
-  return fetcher(url);
-};
+	return fetcher(url)
+}
 
 export const searchForecastWeather = (
-  location: TypeGeoLocation
+	location: TypeGeoLocation
 ): Promise<{
-  location: TypeLocation;
-  current: TypeCurrentWeather;
-  forecast: { forecastday: TypeForecastDay[] };
+	location: TypeLocation
+	current: TypeCurrentWeather
+	forecast: { forecastday: TypeForecastDay[] }
 }> => {
-  const url = addApiSearchParams(getForecastApiUrl(), {
-    q: `${location.lat},${location.lon}`,
-    days: "2",
-  });
+	const url = addApiSearchParams(getForecastApiUrl(), {
+		q: `${location.lat},${location.lon}`,
+		days: '2'
+	})
 
-  return fetcher(url);
-};
+	return fetcher(url)
+}
 
 export const searchHistoryWeather = (
-  location: TypeGeoLocation
+	location: TypeGeoLocation
 ): Promise<{
-  location: TypeLocation;
-  forecast: { forecastday: TypeForecastDay[] };
+	location: TypeLocation
+	forecast: { forecastday: TypeForecastDay[] }
 }> => {
-  const url = addApiSearchParams(getHistoryApiUrl(), {
-    q: `${location.lat},${location.lon}`,
-    dt: formatDateToISO(startOfYesterday()),
-  });
+	const url = addApiSearchParams(getHistoryApiUrl(), {
+		q: `${location.lat},${location.lon}`,
+		dt: formatDateToISO(startOfYesterday())
+	})
 
-  return fetcher(url);
-};
+	return fetcher(url)
+}

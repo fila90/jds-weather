@@ -1,11 +1,12 @@
 {
   "arrowParens": "avoid",
-  "singleQuote": true,
   "plugins": ["prettier-plugin-svelte"],
   "semi": false,
-  "svelteStrictMode": false,
-  "svelteSortOrder": "options-scripts-markup-styles",
+  "singleQuote": true,
   "svelteBracketNewLine": true,
   "svelteIndentScriptAndStyle": true,
-  "trailingComma": "none"
+  "svelteSortOrder": "options-scripts-markup-styles",
+  "svelteStrictMode": false,
+  "trailingComma": "none",
+  "useTabs": true
 }

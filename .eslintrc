@@ -48,7 +48,9 @@
     }
   },
   "ignorePatterns": [
-    "node_modules"
+    "node_modules",
+    "svelte.config.js",
+    "vite.config.js"
   ],
   "rules": {
     "import/order": [
