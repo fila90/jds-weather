@@ -10,8 +10,12 @@
 		locationsQuery = searchLocation(l)
 	}, 300)
 
-	function handleLocationInput() {
+	function onLocationInput() {
 		debounced(location)
+	}
+
+	function handleResetLocation() {
+		location = ''
 	}
 </script>
 
@@ -19,7 +23,7 @@
 	<input
 		type="text"
 		bind:value={location}
-		on:input={handleLocationInput}
+		on:input={onLocationInput}
 		placeholder="Find your location"
 		class="location-search__input"
 	/>
@@ -31,7 +35,7 @@
 			{#if locations.length}
 				<div class="location-items-wrap">
 					{#each locations as location (location.id)}
-						<LocationItem {location} />
+						<LocationItem {location} resetLocation={handleResetLocation} />
 					{/each}
 				</div>
 			{/if}

@@ -4,12 +4,14 @@
 	import { geoLocation } from '../helpers/store'
 
 	export let location: TypeLocationItem
+	export let resetLocation: () => void
 
 	function onLocationSelect() {
 		geoLocation.setGeoLocation({
 			lat: `${location.lat}`,
 			lon: `${location.lon}`
 		})
+		resetLocation()
 	}
 </script>
 
