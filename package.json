@@ -37,7 +37,7 @@
     "date-fns": "2.25.0"
   },
   "lint-staged": {
-    "*.{js,svelte}": "eslint --cache --fix",
+    "*.{js,svelte}": "eslint --fix",
     "*.{js,svelte,css,md}": "prettier --write"
   }
 }
