@@ -24,7 +24,7 @@
 
 <style>
 	.wrap {
-		border: 2px solid var(--color-border);
+		border: 2px solid var(--color-text-secondary);
 		border-radius: 0.5rem;
 		padding: 0.5rem;
 		margin: 0 0.5rem;

@@ -108,7 +108,7 @@
 		border-radius: 0.25rem;
 		margin: 0.5rem 0;
 		padding: 0.5rem;
-		border: 1px solid var(--color-border);
+		border: 1px solid var(--color-text-secondary);
 	}
 
 	.forecast__day {
@@ -133,7 +133,7 @@
 	}
 
 	hr {
-		border: 1px solid var(--color-border);
+		border: 1px solid var(--color-text-secondary);
 		max-width: 80%;
 		margin: 2rem auto;
 	}

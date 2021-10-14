@@ -14,14 +14,3 @@
 		<WeatherForecast forecastDay={FORECAST_DAY.TOMORROW} />
 	{/if}
 </main>
-
-<style>
-	:root {
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-			Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-		font-size: 16px;
-
-		--color-border: #eee;
-		--color-text-secondary: #888;
-	}
-</style>
