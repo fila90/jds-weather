@@ -4,10 +4,10 @@
 	import LocationItem from './LocationItem.svelte'
 
 	let location = ''
-	let promise = Promise.resolve([])
+	let locationsQuery = Promise.resolve([])
 
 	const debounced = debounce((l: string) => {
-		promise = searchLocation(l)
+		locationsQuery = searchLocation(l)
 	}, 300)
 
 	function handleLocationInput() {
@@ -20,13 +20,13 @@
 		type="text"
 		bind:value={location}
 		on:input={handleLocationInput}
-		placeholder="Search your location"
+		placeholder="Find your location"
 		class="location-search__input"
 	/>
 
 	{#if location}
-		{#await promise}
-			<p>...waiting</p>
+		{#await locationsQuery}
+			<h3>...waiting</h3>
 		{:then locations}
 			{#if locations.length}
 				<div class="location-items-wrap">
@@ -48,7 +48,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		padding: 20rem 0;
+		padding: 2rem 0;
 		width: 90%;
 		max-width: 400px;
 	}

@@ -6,9 +6,8 @@
 </script>
 
 <main>
-	{#if !$geoLocation.lat || !$geoLocation.lon}
-		<LocationSearch />
-	{:else}
+	<LocationSearch />
+	{#if $geoLocation.lat && $geoLocation.lon}
 		<WeatherForecast forecastDay={FORECAST_DAY.YESTERDAY} />
 		<WeatherForecast forecastDay={FORECAST_DAY.TODAY} />
 		<WeatherForecast forecastDay={FORECAST_DAY.TOMORROW} />
