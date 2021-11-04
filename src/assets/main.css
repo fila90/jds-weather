@@ -9,13 +9,14 @@
 	--color-text-secondary: #c4cbca;
 	--color-text: #0a0f0d;
 	--color-white: #ffffff;
+	--border-radius: 4px;
 }
 
 input,
 select,
 textarea {
 	color: var(--color-text);
-	border-radius: 4px;
+	border-radius: var(--border-radius);
 	border: 1px solid var(--color-text-secondary);
 	padding: 4px 8px;
 }

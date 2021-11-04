@@ -29,39 +29,90 @@
 	/>
 
 	{#if location}
-		{#await locationsQuery}
-			<h3>...waiting</h3>
-		{:then locations}
-			{#if locations.length}
-				<div class="location-items-wrap">
-					{#each locations as location (location.id)}
-						<LocationItem {location} resetLocation={handleResetLocation} />
-					{/each}
+		<div class="location-items-wrap">
+			{#await locationsQuery then locations}
+				<div class="location-items-wrap__dropdown">
+					{#if locations.length}
+						{#each locations as location (location.id)}
+							<LocationItem {location} resetLocation={handleResetLocation} />
+						{/each}
+					{:else}
+						<p>No results</p>
+					{/if}
 				</div>
-			{/if}
-		{:catch error}
-			<p style="color: red">{error.message}</p>
-		{/await}
+			{:catch error}
+				<p style="color: red">{error.message}</p>
+			{/await}
+		</div>
 	{/if}
 </section>
 
 <style>
+	@keyframes showUp {
+		from {
+			display: block;
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes showDown {
+		from {
+			opacity: 1;
+		}
+
+		to {
+			display: none;
+			opacity: 0;
+		}
+	}
+
 	.location-search {
-		display: flex;
-		margin: auto;
-		flex-direction: column;
 		align-items: center;
+		display: flex;
+		flex-direction: column;
 		justify-content: center;
+		margin: auto;
+		max-width: 400px;
 		padding: 2rem 0;
 		width: 90%;
-		max-width: 400px;
 	}
 
 	.location-search__input {
 		width: 100%;
 	}
 
+	.location-search__input:focus + .location-items-wrap {
+		animation-duration: 0.2s;
+		animation-fill-mode: forwards;
+		animation-name: showUp;
+	}
+
+	.location-search__input:not(:focus) + .location-items-wrap {
+		animation-delay: 0.05s;
+		animation-duration: 0.2s;
+		animation-fill-mode: forwards;
+		animation-name: showDown;
+	}
+
 	.location-items-wrap {
-		margin-top: 1rem;
+		position: relative;
+		width: 100%;
+	}
+
+	.location-items-wrap__dropdown {
+		background-color: var(--color-white);
+		border-radius: var(--border-radius);
+		border: 1px solid var(--color-text-secondary);
+		padding: 0.5rem;
+		position: absolute;
+		top: 0.5rem;
+		width: 100%;
+		z-index: 1;
+		max-height: 400px;
+		overflow: auto;
 	}
 </style>
