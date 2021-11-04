@@ -2,7 +2,6 @@
 	type LoaderSize = 's' | 'm' | 'l'
 
 	export let size: LoaderSize = 'm'
-	console.log(size)
 </script>
 
 <div class="loader-ring">

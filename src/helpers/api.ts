@@ -1,7 +1,3 @@
-import { startOfYesterday } from 'date-fns'
-
-import { fetcher, formatDateToISO } from './util'
-
 import type {
 	TypeCurrentWeather,
 	TypeForecastDay,
@@ -9,6 +5,11 @@ import type {
 	TypeLocation,
 	TypeLocationItem
 } from './type'
+
+import { startOfYesterday } from 'date-fns'
+
+import { fetcher, formatDateToISO } from './util'
+
 
 const getSearchApiUrl = (): string => {
 	const base = `${import.meta.env.VITE_API_URL}/search.json`

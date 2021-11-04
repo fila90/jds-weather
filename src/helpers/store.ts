@@ -1,3 +1,5 @@
+import type { TypeGeoLocation } from './type'
+
 import { writable, derived } from 'svelte/store'
 
 import {
@@ -6,7 +8,6 @@ import {
 	searchHistoryWeather
 } from './api'
 
-import type { TypeGeoLocation } from './type'
 
 function createGeoLocationStore() {
 	const defaultLat = localStorage.getItem('lat')

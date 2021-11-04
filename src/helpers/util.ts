@@ -1,7 +1,7 @@
 import { format } from 'date-fns'
 
-export const debounce = (fn: Function, delay: number): Function => {
-	let timeOutId
+export const debounce = (fn: (any) => void, delay: number): (any) => void => {
+	let timeOutId: NodeJS.Timeout
 	return function (...args) {
 		if (timeOutId) {
 			clearTimeout(timeOutId)
