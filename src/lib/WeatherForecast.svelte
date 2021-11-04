@@ -5,6 +5,7 @@
 	import { forecastWeather } from '../helpers/store'
 	import { formatDateToDay, formatDateToReadable } from '../helpers/util'
 
+	import Loader from './Loader.svelte'
 	import WeatherForecastHour from './WeatherForecastHour.svelte'
 	import WeatherForecastItem from './WeatherForecastItem.svelte'
 	import WeatherForecastTemp from './WeatherForecastTemp.svelte'
@@ -22,7 +23,7 @@
 </script>
 
 {#if !weather || !todayWeather}
-	<p>...loading</p>
+	<Loader />
 {:else}
 	<div class="forecast">
 		<div class="forecast__day">
