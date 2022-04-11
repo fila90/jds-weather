@@ -8,34 +8,14 @@ import type {
 
 import { startOfYesterday } from 'date-fns'
 
+import { API } from './const'
 import { fetcher, formatDateToISO } from './util'
-
-
-const getSearchApiUrl = (): string => {
-	const base = `${import.meta.env.VITE_API_URL}/search.json`
-	return addApiSearchParams(base, { key: `${import.meta.env.VITE_API_KEY}` })
-}
-
-const getCurrentApiUrl = (): string => {
-	const base = `${import.meta.env.VITE_API_URL}/current.json`
-	return addApiSearchParams(base, { key: `${import.meta.env.VITE_API_KEY}` })
-}
-
-const getForecastApiUrl = (): string => {
-	const base = `${import.meta.env.VITE_API_URL}/forecast.json`
-	return addApiSearchParams(base, { key: `${import.meta.env.VITE_API_KEY}` })
-}
-
-const getHistoryApiUrl = (): string => {
-	const base = `${import.meta.env.VITE_API_URL}/history.json`
-	return addApiSearchParams(base, { key: `${import.meta.env.VITE_API_KEY}` })
-}
 
 const addApiSearchParams = (
 	baseUrl: string,
 	querySearch: { [key: string]: string }
 ): string => {
-	const url = new URL(baseUrl)
+	const url = new URL(window.location.origin + baseUrl)
 	const { searchParams } = url
 
 	for (const key in querySearch) {
@@ -48,7 +28,7 @@ const addApiSearchParams = (
 export const searchLocation = async (
 	location: string
 ): Promise<Array<TypeLocationItem>> => {
-	const url = addApiSearchParams(getSearchApiUrl(), { q: location })
+	const url = addApiSearchParams(API.SEARCH, { q: location })
 
 	return await fetcher(url)
 }
@@ -59,7 +39,7 @@ export const searchCurrentWeather = (
 	current: TypeCurrentWeather
 	location: TypeLocation
 }> => {
-	const url = addApiSearchParams(getCurrentApiUrl(), {
+	const url = addApiSearchParams(API.CURRENT, {
 		q: `${location.lat},${location.lon}`
 	})
 
@@ -73,7 +53,7 @@ export const searchForecastWeather = (
 	current: TypeCurrentWeather
 	forecast: { forecastday: TypeForecastDay[] }
 }> => {
-	const url = addApiSearchParams(getForecastApiUrl(), {
+	const url = addApiSearchParams(API.FORECAST, {
 		q: `${location.lat},${location.lon}`,
 		days: '2'
 	})
@@ -87,7 +67,7 @@ export const searchHistoryWeather = (
 	location: TypeLocation
 	forecast: { forecastday: TypeForecastDay[] }
 }> => {
-	const url = addApiSearchParams(getHistoryApiUrl(), {
+	const url = addApiSearchParams(API.HISTORY, {
 		q: `${location.lat},${location.lon}`,
 		dt: formatDateToISO(startOfYesterday())
 	})
