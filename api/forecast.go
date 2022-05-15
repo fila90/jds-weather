@@ -17,11 +17,6 @@ type TypeForecastResponse struct {
 }
 
 func Forecast(w http.ResponseWriter, r *http.Request) {
-	// err := godotenv.Load("./.env")
-	// if err != nil {
-	// 	log.Fatalf("Cant read env file. Err: %s", err)
-	// }
-
 	url := apiutils.GetQuryUrl("forecast", r.URL.String())
 	fmt.Println(url)
 
