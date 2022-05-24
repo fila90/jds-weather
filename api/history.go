@@ -8,13 +8,6 @@ import (
 	"net/http"
 )
 
-type TypeHistoaryResponse struct {
-	Location apiutils.TypeLocation `json:"location"`
-	Forecast struct {
-		Forecastday []apiutils.TypeForecastday `json:"forecastday"`
-	} `json:"forecast"`
-}
-
 func History(w http.ResponseWriter, r *http.Request) {
 	url := apiutils.GetQuryUrl("history", r.URL.String())
 	fmt.Println(url)
@@ -33,7 +26,7 @@ func History(w http.ResponseWriter, r *http.Request) {
 		defer res.Body.Close()
 	}
 
-	var history TypeHistoaryResponse
+	var history apiutils.TypeHistoaryResponse
 	err = json.NewDecoder(res.Body).Decode(&history)
 	if err != nil {
 		panic(err)

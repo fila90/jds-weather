@@ -8,14 +8,6 @@ import (
 	"net/http"
 )
 
-type TypeForecastResponse struct {
-	Location apiutils.TypeLocation `json:"location"`
-	Current  apiutils.TypeCurrent  `json:"current"`
-	Forecast struct {
-		Forecastday []apiutils.TypeForecastday `json:"forecastday"`
-	} `json:"forecast"`
-}
-
 func Forecast(w http.ResponseWriter, r *http.Request) {
 	url := apiutils.GetQuryUrl("forecast", r.URL.String())
 	fmt.Println(url)
@@ -34,7 +26,7 @@ func Forecast(w http.ResponseWriter, r *http.Request) {
 		defer res.Body.Close()
 	}
 
-	var forecast TypeForecastResponse
+	var forecast apiutils.TypeForecastResponse
 
 	err = json.NewDecoder(res.Body).Decode(&forecast)
 	if err != nil {

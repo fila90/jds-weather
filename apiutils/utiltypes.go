@@ -113,3 +113,18 @@ type TypeForecastday struct {
 	Day  TypeDay    `json:"day"`
 	Hour []TypeHour `json:"hour"`
 }
+
+type TypeHistoaryResponse struct {
+	Location TypeLocation `json:"location"`
+	Forecast struct {
+		Forecastday []TypeForecastday `json:"forecastday"`
+	} `json:"forecast"`
+}
+
+type TypeForecastResponse struct {
+	Location TypeLocation `json:"location"`
+	Current  TypeCurrent  `json:"current"`
+	Forecast struct {
+		Forecastday []TypeForecastday `json:"forecastday"`
+	} `json:"forecast"`
+}
