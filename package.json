@@ -5,7 +5,7 @@
   "scripts": {
     "build": "vite build",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "develop": "vercel dev",
+    "dev": "vite",
     "lint": "eslint './src/**/*.{js,ts,svelte}'",
     "lint-staged": "lint-staged",
     "lint:fix": "eslint --fix './src/**/*.{js,ts,svelte}'",
@@ -31,7 +31,6 @@
     "svelte-preprocess": "4.10.6",
     "tslib": "2.4.0",
     "typescript": "4.6.4",
-    "vercel": "24.2.3",
     "vite": "2.9.9"
   },
   "dependencies": {
