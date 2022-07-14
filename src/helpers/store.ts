@@ -8,7 +8,6 @@ import {
 	searchHistoryWeather
 } from './api'
 
-
 function createGeoLocationStore() {
 	const defaultLat = localStorage.getItem('lat')
 	const defaultLon = localStorage.getItem('lon')
@@ -63,12 +62,4 @@ export const forecastWeather = derived(
 	])
 )
 
-// export const historyWeather = derived(
-//   geoLocation,
-//   ($geoLocation, set) => {
-//     searchHistoryWeather($geoLocation).then((res) =>
-//       set(res.forecast.forecastday[0].day)
-//     );
-//   },
-//   null
-// );
+export const activeWeatherParam = writable('temp_c')
