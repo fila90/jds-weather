@@ -34,8 +34,8 @@
 				),
 				datasets: [
 					{
-						backgroundColor: 'rgba(173,179,188,0.4)',
-						borderColor: 'rgba(173,179,188,0.4)',
+						backgroundColor: 'rgba(173,179,188,0.5)',
+						borderColor: 'rgba(173,179,188,0.5)',
 						borderDash: [1, 5],
 						borderWidth: 1,
 						data: weatherYesterday.hour.map(hour => hour[$activeWeatherParam]),
@@ -50,8 +50,8 @@
 						tension: 0.1
 					},
 					{
-						backgroundColor: 'rgba(47,243,224,0.5)',
-						borderColor: 'rgba(47,243,224,0.5)',
+						backgroundColor: 'rgba(47,243,224,0.6)',
+						borderColor: 'rgba(47,243,224,0.6)',
 						borderDash: [1, 3],
 						borderWidth: 2,
 						data: weatherTomorrow.hour.map(hour => hour[$activeWeatherParam]),
@@ -92,5 +92,11 @@
 	bind:this={canvasCtx}
 	aria-label="Visual representation of weather forecast"
 	role="img"
-	height="50"
+	class="canvas"
 />
+
+<style>
+	.canvas {
+		max-height: 50vh;
+	}
+</style>
