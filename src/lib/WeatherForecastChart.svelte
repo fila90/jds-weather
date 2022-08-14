@@ -8,8 +8,6 @@
 	import { activeWeatherParam, forecastWeather } from '../helpers/store'
 	import { formatDateToHour } from '../helpers/util'
 
-	import Loader from './Loader.svelte'
-
 	let weatherYesterday: TypeForecastDay
 	let weatherToday: TypeForecastDay
 	let weatherTomorrow: TypeForecastDay
@@ -36,31 +34,28 @@
 				),
 				datasets: [
 					{
-						label: 'Yesterday',
-						borderColor: 'rgba(251,86,7,0.2)',
-						backgroundColor: 'rgba(251,86,7,0.2)',
-						data: weatherYesterday.hour.map(hour => hour[$activeWeatherParam])
+						backgroundColor: 'rgba(173,179,188,0.4)',
+						borderColor: 'rgba(173,179,188,0.4)',
+						borderDash: [1, 7],
+						borderWidth: 1,
+						data: weatherYesterday.hour.map(hour => hour[$activeWeatherParam]),
+						label: 'Yesterday'
 					},
 					{
-						label: 'Today',
-						borderColor: 'rgba(255,0,110,0.6)',
-						backgroundColor: 'rgba(255,0,110,0.6)',
-						data: weatherToday.hour.map(hour => hour[$activeWeatherParam])
+						backgroundColor: 'rgba(250,38,160,1)',
+						borderColor: 'rgba(250,38,160,1)',
+						data: weatherToday.hour.map(hour => hour[$activeWeatherParam]),
+						label: 'Today'
 					},
 					{
-						label: 'Tomorrow',
-						borderColor: 'rgba(58,134,255,0.4)',
-						backgroundColor: 'rgba(58,134,255,0.4)',
-						data: weatherTomorrow.hour.map(hour => hour[$activeWeatherParam])
+						backgroundColor: 'rgba(47,243,224,0.5)',
+						borderColor: 'rgba(47,243,224,0.5)',
+						borderDash: [1, 3],
+						borderWidth: 2,
+						data: weatherTomorrow.hour.map(hour => hour[$activeWeatherParam]),
+						label: 'Tomorrow'
 					}
 				]
-			},
-			options: {
-				elements: {
-					line: {
-						borderWidth: 2
-					}
-				}
 			}
 		})
 	}
