@@ -32,3 +32,9 @@ select:focus {
 	color: var(--color-text-secondary);
 	opacity: 1;
 }
+
+.center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

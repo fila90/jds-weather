@@ -25,7 +25,6 @@ function createGeoLocationStore() {
 		}
 	}
 }
-
 export const geoLocation = createGeoLocationStore()
 
 export const currentWeather = derived(

@@ -1,19 +1,31 @@
 <script lang="ts">
+	import type { TypeForecastDay } from './helpers/type'
+
 	import { FORECAST_DAY } from './helpers/const'
-	import { geoLocation } from './helpers/store'
+	import { forecastWeather, geoLocation } from './helpers/store'
+
+	import Loader from './lib/Loader.svelte'
 	import LocationSearch from './lib/LocationSearch.svelte'
-	import WeatherForecast from './lib/WeatherForecast.svelte'
 	import WeatherForecastChart from './lib/WeatherForecastChart.svelte'
 	import WeatherForecastSelector from './lib/WeatherForecastSelector.svelte'
+
+	let weatherToday: TypeForecastDay
+
+	$: {
+		weatherToday = $forecastWeather.get(FORECAST_DAY.TODAY)
+	}
 </script>
 
 <main>
 	<LocationSearch />
-	{#if $geoLocation.lat && $geoLocation.lon}
+	{#if !$geoLocation.lat || !$geoLocation.lon}
+		<div class="center">
+			<h2>No location selected!</h2>
+		</div>
+	{:else if !weatherToday}
+		<Loader />
+	{:else}
 		<WeatherForecastSelector />
 		<WeatherForecastChart />
-		<WeatherForecast forecastDay={FORECAST_DAY.YESTERDAY} />
-		<WeatherForecast forecastDay={FORECAST_DAY.TODAY} />
-		<WeatherForecast forecastDay={FORECAST_DAY.TOMORROW} />
 	{/if}
 </main>
