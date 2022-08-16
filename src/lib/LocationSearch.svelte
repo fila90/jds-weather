@@ -11,7 +11,7 @@
 	}, 300)
 
 	function onLocationInput() {
-		debounced(location)
+		debounced(encodeURIComponent(location))
 	}
 
 	function handleResetLocation() {
