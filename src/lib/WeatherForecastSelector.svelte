@@ -12,7 +12,6 @@
 	const handleSelectorClick = (param: string) => () => {
 		activeWeatherParam.set(param)
 	}
-	console.log($activeWeatherParam)
 </script>
 
 <div class="forecast-selector">
