@@ -9,10 +9,10 @@
 	import WeatherForecastChart from './lib/WeatherForecastChart.svelte'
 	import WeatherForecastSelector from './lib/WeatherForecastSelector.svelte'
 
-	let weatherToday: TypeForecastDay
+	let forecast: TypeForecastDay
 
 	$: {
-		weatherToday = $forecastWeather.get(FORECAST_DAY.TODAY)
+		forecast = $forecastWeather.get(FORECAST_DAY.TODAY)
 	}
 </script>
 
@@ -22,7 +22,7 @@
 		<div class="center">
 			<h2>No location selected!</h2>
 		</div>
-	{:else if !weatherToday}
+	{:else if !forecast}
 		<Loader />
 	{:else}
 		<WeatherForecastSelector />

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { searchLocation } from '../helpers/api'
-	import { debounce } from '../helpers/util'
+	import { currentLocation } from '../helpers/store'
+	import { debounce, formatDateToReadable } from '../helpers/util'
 	import LocationItem from './LocationItem.svelte'
 
 	let location = ''
@@ -24,7 +25,11 @@
 		type="text"
 		bind:value={location}
 		on:input={onLocationInput}
-		placeholder="Find your location"
+		placeholder={$currentLocation
+			? `${$currentLocation.name}, ${formatDateToReadable(
+					new Date($currentLocation.localtime)
+			  )}`
+			: 'Find your location'}
 		class="location-search__input"
 	/>
 

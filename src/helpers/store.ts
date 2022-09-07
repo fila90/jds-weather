@@ -49,6 +49,7 @@ export const forecastWeather = derived(
 					['tomorrow', forecast.forecast.forecastday[1]]
 				])
 				set(weather)
+				currentLocation.set(forecast.location)
 			})
 			.catch(err => {
 				throw Error(err)
@@ -62,3 +63,5 @@ export const forecastWeather = derived(
 )
 
 export const activeWeatherParam = writable('temp_c')
+
+export const currentLocation = writable(null)

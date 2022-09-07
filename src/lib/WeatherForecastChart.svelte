@@ -91,7 +91,6 @@
 <canvas
 	bind:this={canvasCtx}
 	aria-label="Visual representation of weather forecast"
-	role="img"
 	class="canvas"
 />
 
