@@ -39,10 +39,10 @@
 		<i class="forecast-selector__icon" data-feather="activity" />
 	</button>
 	<button
-		title="Rain"
-		on:click={handleSelectorClick('will_it_rain')}
+		title="Precipitation"
+		on:click={handleSelectorClick('precip_mm')}
 		class={`forecast-selector__button ${
-			$activeWeatherParam === 'will_it_rain'
+			$activeWeatherParam === 'precip_mm'
 				? 'forecast-selector__button--active'
 				: ''
 		}`}
@@ -60,30 +60,21 @@
 	>
 		<i class="forecast-selector__icon" data-feather="wind" />
 	</button>
-	<button
-		title="Precipitation"
-		on:click={handleSelectorClick('precip_mm')}
-		class={`forecast-selector__button ${
-			$activeWeatherParam === 'precip_mm'
-				? 'forecast-selector__button--active'
-				: ''
-		}`}
-	>
-		<i class="forecast-selector__icon" data-feather="umbrella" />
-	</button>
 </div>
 
 <style>
 	.forecast-selector {
 		display: flex;
 		align-items: center;
+		justify-content: center;
+		padding: 1rem 0;
+		gap: 0.5rem;
 	}
 
 	.forecast-selector__button {
 		border-radius: 4px;
 		cursor: pointer;
 		padding: 2px 4px;
-		margin-right: 4px;
 		transition: background-color ease 0.4s;
 	}
 
